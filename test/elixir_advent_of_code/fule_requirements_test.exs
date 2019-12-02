@@ -2,11 +2,11 @@ defmodule FuelRequirementsTest do
   use ExUnit.Case
   alias ElixirAdventOfCode.FuelRequirements
 
-  describe "read from file" do
-    test "returns error for unexisted file" do
+  describe "calculates total fuel for some mass + fuel" do
+    test "returns fuel value" do
       path_to_file = File.cwd! |> Path.join("test/fixtures/fuel_requirements.txt")
 
-      assert {:ok, 3404722} = FuelRequirements.for_modules(%{filename: path_to_file})
+      assert {:ok, 5104215} = FuelRequirements.for_modules(%{filename: path_to_file})
     end
   end
 end

@@ -4,7 +4,7 @@ defmodule ElixirAdventOfCode.FuelRequirements do
   """
 
   @doc """
-  Perform a quiz, day 1, part 1
+  Perform a quiz, day 1, part 2
 
   ## Examples
 
@@ -22,12 +22,21 @@ defmodule ElixirAdventOfCode.FuelRequirements do
   defp do_perform(content) do
     content
     |> String.split("\n", trim: true)
-    |> Stream.map(&(calculate_fuel(&1)))
+    |> Stream.map(fn (value) -> value |> string_to_integer() |> calculate_total_fuel(0) end)
     |> Enum.sum()
   end
 
+  # total fuel for some mass + fuel
+  defp calculate_total_fuel(value, acc) when value <= 0, do: acc - value
+
+  defp calculate_total_fuel(value, acc) do
+    need_fuel = calculate_fuel(value)
+    calculate_total_fuel(need_fuel, acc + need_fuel)
+  end
+
+  # fuel for some mass
   defp calculate_fuel(value) do
-    value |> string_to_integer() |> div(3) |> subtraction(2)
+    value |> div(3) |> subtraction(2)
   end
 
   defp string_to_integer(value) do
