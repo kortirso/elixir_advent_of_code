@@ -6,7 +6,7 @@ defmodule Day03Test do
     test "returns value" do
       path_to_file = File.cwd! |> Path.join("test/fixtures/day03_input.txt")
 
-      Day03.perform(%{filename: path_to_file})
+      assert {:ok, 529} = Day03.perform(%{filename: path_to_file})
     end
   end
 end
