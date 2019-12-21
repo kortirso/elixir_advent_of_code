@@ -1,4 +1,4 @@
-defmodule ElixirAdventOfCode.MixProject do
+defmodule AdventOfCode.MixProject do
   use Mix.Project
 
   @description """

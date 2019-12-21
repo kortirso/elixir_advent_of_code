@@ -1,6 +1,6 @@
-defmodule ElixirAdventOfCode.Opcodes do
+defmodule AdventOfCode.Advent2019.Day02 do
   @moduledoc """
-  Documentation for ElixirAdventOfCode.Opcodes
+  Documentation for AdventOfCode.Advent2019
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule ElixirAdventOfCode.Opcodes do
 
   ## Examples
 
-      iex> ElixirAdventOfCode.FuelRequirements.Opcodes(%{filename: filename})
+      iex> AdventOfCode.Advent2019.Day02.perform(%{filename: filename})
 
   """
   def perform(%{filename: filename}) do

@@ -1,6 +1,6 @@
-defmodule ElixirAdventOfCode.FuelRequirements do
+defmodule AdventOfCode.Advent2019.Day01 do
   @moduledoc """
-  Documentation for ElixirAdventOfCode.FuelRequirements
+  Documentation for AdventOfCode.Advent2019.Day01
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule ElixirAdventOfCode.FuelRequirements do
 
   ## Examples
 
-      iex> ElixirAdventOfCode.FuelRequirements.for_modules(%{filename: filename})
+      iex> AdventOfCode.Advent2019.Day01.for_modules(%{filename: filename})
       {:ok, 3404722}
 
   """

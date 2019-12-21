@@ -1,4 +1,4 @@
-# ElixirAdventOfCode
+# AdventOfCode
 
 **TODO: Add description**
 
