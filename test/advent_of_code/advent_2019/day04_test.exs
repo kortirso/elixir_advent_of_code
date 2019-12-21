@@ -4,7 +4,7 @@ defmodule Day04Test do
 
   describe "calculates amount of passwords" do
     test "returns value" do
-      assert {:ok, 1063} = Day04.perform(246540, 787419)
+      assert {:ok, 686} = Day04.perform(246540, 787419)
     end
   end
 end

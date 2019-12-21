@@ -4,7 +4,7 @@ defmodule AdventOfCode.Advent2019.Day04 do
   """
 
   @doc """
-  Perform a quiz, day 4, part 1
+  Perform a quiz, day 4, part 2
 
   ## Examples
 
@@ -18,17 +18,19 @@ defmodule AdventOfCode.Advent2019.Day04 do
   defp do_perform(value, to, acc) when value > to, do: acc
 
   defp do_perform(value, to, acc) when value <= to do
-    list_of_numbers =
-      value
-      |> Integer.to_string()
-      |> String.graphemes()
-      |> Enum.map(fn x -> x |> String.to_integer() end)
-    if valid?(list_of_numbers, 0, false, false), do: do_perform(value + 1, to, acc + 1), else: do_perform(value + 1, to, acc)
+    result = value |> Integer.digits() |> valid?(0, {[]}, false)
+    if result, do: do_perform(value + 1, to, acc + 1), else: do_perform(value + 1, to, acc)
   end
 
   defp valid?(_, _, _, true), do: false
 
-  defp valid?(_, 5, true, false), do: true
+  defp valid?(_, 5, {double, _}, false) do
+    cond do
+      Enum.count(double) == 1 && Enum.at(double, 0) > 2 -> false
+      Enum.count(double) == 2 && Enum.at(double, 0) == 3 && Enum.at(double, 1) == 3 -> false
+      true -> true
+    end
+  end
 
   defp valid?(_, 5, _, _), do: false
 
@@ -38,8 +40,18 @@ defmodule AdventOfCode.Advent2019.Day04 do
 
     cond do
       a > b -> valid?(list_of_numbers, index, double, true)
-      a == b -> valid?(list_of_numbers, index + 1, true, decrease)
+      a == b -> valid?(list_of_numbers, index + 1, check_doubles(double, b), decrease)
       true -> valid?(list_of_numbers, index + 1, double, decrease)
+    end
+  end
+
+  defp check_doubles(double, value) do
+    cond do
+      elem(double, 0) == [] -> {[2], value}
+      elem(double, 1) == value ->
+        [head | tail] = elem(double, 0)
+        {[head + 1 | tail], value}
+      true -> {[2 | elem(double, 0)], value}
     end
   end
 end
